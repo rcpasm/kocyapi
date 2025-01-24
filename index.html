@@ -1,32 +1,37 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Koç Yapı</title>
     <link rel="stylesheet" href="style.css">
+    <script src="scripts.js" defer></script>
 </head>
+
 <body>
-    <header>
-        <div class="logo">
-            <img src="icon.png" alt="Çankırı Parke ve Bims Logo">
-        </div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Ana Sayfa</a></li>
-                <li><a href="urunler.html">Ürünler</a></li>
-                <li><a href="hakkimizda.html">Hakkımızda</a></li>
-                <li><a href="iletisim.html">İletişim</a></li>
-            </ul>
-        </nav>
-    </header>
+    <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <nav class="side-menu">
+        <img src="icon.png" alt="Logo" class="menu-logo">
+        <ul>
+            <li><a href="index.html">Ana Sayfa</a></li>
+            <li><a href="urunler.html">Ürünler</a></li>
+            <li><a href="hakkimizda.html">Hakkımızda</a></li>
+            <li><a href="iletisim.html">İletişim</a></li>
+        </ul>
+    </nav>
+    <div class="overlay"></div>
 
     <main>
         <section class="hero">
             <h1>Çankırı Parke ve Bims</h1>
             <p></p>
             <img src="simge.jpeg" alt="simge" loading="lazy">
-            <video controls>
+            <video id="hero-video" autoplay loop muted>
                 <source src="koçüretimmüzikli.mp4" type="video/mp4">
                 Tarayıcınız video etiketini desteklemiyor.
             </video>
@@ -34,48 +39,14 @@
     </main>
 
     <footer>
-        <p>© 2025 Çankırı Parke ve Bims. Tüm hakları saklıdır.</p>
-        <p>WhatsApp: <a href="https://wa.me/905313727171">+90 531 372 71 71</a></p>
+        <p>© KOÇ YAPI Beton Parke & Bims 2025 Tüm hakları saklıdır.</p>
+        <p>Telefon: <a href="tel:+901234567890">+90 123 456 7890</a></p>
+        <p>E-posta: <a href="mailto:info@bimsfabrikasi.com">info@bimsfabrikasi.com</a></p>
+        <p>Adres: Fabrika Adresiniz, Şehir, Ülke</p>
+        <p>WhatsApp: <a href="https://wa.me/905313727171" target="_blank">İletişim için buraya tıklayın</a></p>
     </footer>
-    <script>
-        let lastScrollTop = 0;
-        const header = document.querySelector('header');
-        
-        window.addEventListener('scroll', function() {
-            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            
-            if (scrollTop > lastScrollTop) {
-                // Aşağı kaydırılıyor
-                header.style.top = '-230px'; // Header yüksekliğinde yukarıya kaydırılır
-            } else {
-                // Yukarı kaydırılıyor
-                header.style.top = '0';
-            }
-            lastScrollTop = scrollTop;
-        });
-    </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const video = document.querySelector('video');
-            const observerOptions = {
-                root: null, // viewport olarak ayarla
-                rootMargin: '0px',
-                threshold: 0.5 // Video'nun %50'si görünür olduğunda tetikle
-            };
     
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        video.play();
-                    } else {
-                        video.pause();
-                    }
-                });
-            }, observerOptions);
-    
-            observer.observe(video);
-        });
-    </script>
     
 </body>
+
 </html>

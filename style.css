@@ -1,15 +1,20 @@
 /* Sayfa Genel Yapısı */
-html, body {
-    height: 100%; /* Sayfa yüksekliği %100 */
-    margin: 0; /* Margin sıfırlama */
+html,
+body {
+    height: 100%;
+    /* Sayfa yüksekliği %100 */
+    margin: 0;
+    /* Margin sıfırlama */
     display: flex;
-    flex-direction: column; /* Sayfa içeriklerinin dikey sırada olması */
+    flex-direction: column;
+    /* Sayfa içeriklerinin dikey sırada olması */
     overflow-x: hidden;
 }
 
 /* İçerik kısmı */
 .main-content {
-    flex: 1; /* İçerik alanı boşluğu kaplar, footer altta kalır */
+    flex: 1;
+    /* İçerik alanı boşluğu kaplar, footer altta kalır */
 }
 
 /* Genel Ayarlar */
@@ -26,126 +31,81 @@ body {
     background-color: #f9f9f9;
 }
 
-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    transition: top 1s ease; /* geçiş animasyonu*/
-    display: flex;
-    justify-content: space-between; /* Logo ve menü arasına boşluk bırak */
-    align-items: center;
-    padding: 0 20px; /* Yatayda boşluk bırak */
-    height: 230px; /* Header yüksekliği */
-    background: linear-gradient(135deg, #1e3a8a, #3b82f6, #1e40af); /* Lacivert geçiş */
-    color: #fff;
-    border-bottom: 2px solid #0f172a; /* Alt çizgi efekti */
-    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2); /* Hafif gölge */
-    width: 100%; /* Ekranın tamamını kaplamasını sağlar */
-    position: relative; /* Konumlandırmayı sağlar */
-    box-sizing: border-box; /* Padding ve border'ı genişliğe dahil eder */
-}
-
-
-header .logo img {
-    height: auto; /* Yüksekliği aynı tut */
-    width: 400px; /* Otomatik genişlik */
-    
-}
-
+/* Navigation */
 nav {
-    flex: 1; /* Menüyü esnek bir şekilde ortalamaya yardımcı olur */
+    flex: 1;
     display: flex;
-    justify-content:center ; /* Menü seçeneklerini yatayda ortala */
+    justify-content: center;
     align-items: center;
     height: 100%;
 }
+
 nav ul {
     list-style: none;
     display: flex;
     gap: 20px;
     padding: 0;
     margin: 0;
-    flex-wrap: nowrap; /* Menü öğelerinin alt satıra kaymasını engeller */
-    justify-content: center; /* Menü öğelerini ortalar */
-    align-items: center; /* Menü öğelerini dikeyde ortalar */
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
 }
+
 nav ul li {
-    margin: 0 15px; /* Menü öğeleri arasına boşluk bırak */
+    margin: 0 15px;
 }
+
 nav ul li a {
-    color: #000; /* Menü seçeneklerinin rengi siyah */
-    text-decoration: none; /* Alt çizgiyi kaldır */
+    color: #000;
+    text-decoration: none;
     font-weight: bold;
     font-size: 1.2rem;
     border-radius: 5px;
     white-space: nowrap;
     transition: color 0.3s, background-color 0.3s;
-    padding: 8px 12px; /* Arka plandaki alanı artırmak için padding ekliyoruz */
+    padding: 8px 12px;
 }
 
 nav ul li a:hover {
-    color: #b8b8b8; /* Yazının rengi, üzerine gelindiğinde gümüş metalik tonunda değişecek */
-    text-decoration: none; /* Alt çizgiyi kaldır */
+    color: #b8b8b8;
 }
-img {
-    max-width: 100%;
-    height: auto;
-}
+
 /* Mobil Uyumlu Header */
 @media (max-width: 768px) {
-    header {
-        flex-direction: column; /* Mobilde logo ve menü dikey sıralanır */
-        height: auto; /* Yükseklik otomatik olmalı */
-        padding: 20px 10px; /* Yatayda daha az boşluk */
-    }
-
-    .logo img {
-        width: 100%;
-        height: auto;
-    }
-
     nav ul {
-        flex-direction: row; /* Menü öğeleri yatay sıralanır */
+        flex-direction: row;
         gap: 10px;
         justify-content: flex-start;
-        align-items: center; /* Menü öğelerini ortalar */
-    }
-    nav ul li {
-        margin: 10px 0; /* Menü öğeleri arasındaki boşluk kaldırıldı */
+        align-items: center;
     }
 
-    nav ul li a {
-        font-size: 1rem; /* Yazı boyutunu biraz küçültüyoruz */
-    }
-    body {
-        font-size: 14px;
-    }
     .hero video {
-        width: 50%; /* Mobil cihazlarda genişliği %90 yap */
-        max-width: 400px; /* Küçük ekranlar için maksimum genişlik */
-        margin: 10px auto; /* Daha az boşluk */
-    }
-}
-
-/* Tablet Uyumlu Header */
-@media (max-width: 1024px) {
-    header {
-        padding: 20px 15px; /* Tablet için uygun padding */
-    }
-
-    .logo img {
         width: 100%;
-        height: auto;
+        max-width: 80px;
+        margin: 10px auto;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    nav .menu {
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background: #1e3a8a;
+        width: 100%;
+        padding: 10px 0;
+    }
+
+    nav .menu.active {
+        display: flex;
     }
 }
 
-/* Başlık Tasarımı */
-h1 {
-    white-space: nowrap; /* Başlığın metninin tek satırda kalmasını sağlar */
-    overflow: hidden; /* Taşan metni gizler */
-    text-overflow: ellipsis; /* Taşan metnin sonunda '...' gösterir */
-}
 /* Hero Bölümü */
 .hero {
     text-align: center;
@@ -161,14 +121,14 @@ h1 {
 
 /* Footer Tasarımı */
 footer {
-    background-color: #0f172a; /* Footer arka plan rengi */
+    background-color: #0f172a; /* Arka plan rengi */
     color: white;
     padding: 20px 0; /* Yükseklik ve iç boşluk */
     text-align: center;
-    width: 100%; /* Ekranın tamamını kaplasın */
-    position: fixed;
-    bottom: 0; /* Sayfanın en alt kısmında */
+    width: 100%; /* Sayfanın tamamını kaplasın */
+    box-sizing: border-box;
 }
+
 footer a {
     color: #1db954;
     text-decoration: none;
@@ -182,14 +142,135 @@ footer a:hover {
     max-width: 100%;
     height: auto;
     margin-top: 20px;
-    border-radius: 10px; /* Köşeleri yuvarlatma */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Gölgelendirme efekti */
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+
 /* videolar */
 .hero video {
-    width: 30%; /* Cihazın genişliğine göre uyum sağlar */
-    max-width: 600px; /* Büyük ekranlarda maksimum genişlik */
-    height: auto; /* Orantılı bir şekilde yükseklik ayarlanır */
-    margin: 20px auto; /* Videoyu ortalar */
-    display: block; /* Ortalamak için blok seviyesinde eleman */
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    margin: 20px auto;
+    display: block;
+}
+
+/* Hamburger Menüsü - Görsel Ayarlar */
+.hamburger {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 25px;
+    cursor: pointer;
+    z-index: 11;
+}
+
+.hamburger span {
+    display: block;
+    height: 3px;
+    background: #333;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Soldan Çıkan Menü */
+.side-menu {
+    position: fixed;
+    top: 0;
+    left: -300px;
+    width: 300px;
+    height: 100%;
+    background: linear-gradient(135deg, #1e3a8a, #3b82f6, #1e40af);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    transition: left 0.3s ease;
+    z-index: 10;
+}
+
+.side-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.side-menu ul li {
+    margin: 0;
+}
+
+.side-menu ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.5rem;
+    transition: color 0.3s;
+    display: block;
+}
+
+.side-menu ul li a:hover {
+    color: #ffcc00;
+}
+
+/* Menü Açıldığında Overlay */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.3s ease;
+    z-index: 9;
+}
+
+/* Menü Açıldığında */
+.side-menu.active {
+    left: 0;
+}
+
+.overlay.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Menü logosu */
+.menu-logo {
+    max-width: 300px;
+    /* Logo boyutu */
+    margin-top: 20px;
+    /* Yukarıdan boşluk */
+    margin-bottom: 30px;
+    /* Alttaki menüden boşluk */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    /* Ortalamak için */
+}
+
+.side-menu.active .menu-logo:hover {
+    transform: scale(1.1);
+    /* Hover yapıldığında büyütme efekti */
 }
